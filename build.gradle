@@ -1,0 +1,44 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'awesome-sftp'
+    version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+
+    // Spring Boot (version managed by spring-boot-gradle-plugin)
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-ws")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-redis")
+
+    // Spring MVC
+    compile("org.springframework.integration:spring-integration-core:4.2.2.RELEASE")
+    compile("org.springframework.integration:spring-integration-sftp:4.2.2.RELEASE")
+    compile("org.springframework.integration:spring-integration-redis:4.2.2.RELEASE")
+}
